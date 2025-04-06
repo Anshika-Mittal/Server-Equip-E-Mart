@@ -33,7 +33,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://client-equip-e-mart.vercel.app",
+    origin: "client-equip-e-mart-m8lpmwvft-anshika-mittals-projects-daf2a859.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
