@@ -25,10 +25,18 @@ mongoose
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is now running on port ${PORT}`);
+});
+
+// app.use(cors({
+//   origin: 'https://your-frontend.vercel.app', // Update later when frontend is live
+//   credentials: true,
+// }));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://client-equip-e-mart.vercel.app/auth/login",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -41,13 +49,24 @@ app.use(
   })
 );
 
+// app.get('/', (req, res) => {
+//   res.send('Server is running');
+// });
+// app.use(express.json());
+
+
+
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
+console.log("Auth router loaded");
+
+app.use("/api/shop/products", shopProductsRouter);
+console.log("Shop products router loaded");
+
 app.use("/api/admin/products", adminProductsRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 
-app.use("/api/shop/products", shopProductsRouter);
 app.use("/api/shop/cart", shopCartRouter);
 app.use("/api/shop/address", shopAddressRouter);
 app.use("/api/shop/order", shopOrderRouter);
