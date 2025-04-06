@@ -36,7 +36,7 @@ app.listen(PORT, () => {
 
 app.use(
   cors({
-    origin: "https://client-equip-e-mart.vercel.app/auth/login",
+    origin: "https://client-equip-e-mart.vercel.app",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
