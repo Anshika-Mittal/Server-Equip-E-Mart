@@ -25,9 +25,6 @@ mongoose
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is now running on port ${PORT}`);
-});
 
 // app.use(cors({
 //   origin: 'https://your-frontend.vercel.app', // Update later when frontend is live
@@ -49,13 +46,6 @@ app.use(
   })
 );
 
-// app.get('/', (req, res) => {
-//   res.send('Server is running');
-// });
-// app.use(express.json());
-
-
-
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api/auth", authRouter);
@@ -75,4 +65,10 @@ app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
 
-app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
+// const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${PORT}`);
+});
+
